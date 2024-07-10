@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int minOperations(vector<string>& logs) {
+        int depth = 0;  // Represents the current depth level of the folder
+        for (const string& log : logs) {
+            if (log == "../") {
+                if (depth > 0) {
+                    depth--;  // Move up to the parent folder
+                }
+            } else if (log != "./") {
+                depth++;  // Move into the child folder
+            }
+        }
+        return depth;  // Number of operations needed to return to the main folder
+    }
+};
